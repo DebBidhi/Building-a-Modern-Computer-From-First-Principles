@@ -16,7 +16,7 @@ This project provides a hands-on journey through the entire computing hierarchy,
 ### [12: Operating System](12)
 ### [12: Driver](./Driver/)
 
-`Go through all the README.md pages of each project for detailed understanding.`
+## `Go through all the README.md pages of each project for detailed understanding.`
 
 
 ## Quick look:
