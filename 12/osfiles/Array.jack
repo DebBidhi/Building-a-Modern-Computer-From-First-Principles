@@ -1,0 +1,12 @@
+class Array{
+    //all the setup except construction and dispose done by compiler, so we only need to devlop this 2
+    //construction implemented as an function cuz array has no field, so we are avoiding unnecessery symbol table access 
+    function Array new(int sizeofarray){
+        return Memory.alloc(sizeofarray);
+    }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    } 
+}

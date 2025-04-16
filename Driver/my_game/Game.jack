@@ -1,0 +1,215 @@
+class Game {
+    field int question, total;
+    field Array arr;
+
+    constructor Game new() {
+        let total = 0;
+        let question = 0;
+        let arr = Array.new(10);
+
+        let arr[0] = "Paris is the capital of France?";
+        let arr[1] = "Yoga is invented in India?";
+        let arr[2] = "The Amazon Rainforest produces 50% of the world's oxygen?";
+        let arr[3] = "Mount Fuji is the tallest mountain in the world?";
+        let arr[4] = "The Statue of Liberty was a gift from France to the United States?";
+        let arr[5] = "Sun is a Star?";
+        let arr[6] = "The Empire State Building is taller than the Eiffel Tower?";
+        let arr[7] = "Earth is Flat?";
+        let arr[8] = "The Indian festival of lights is called Diwali?";
+        let arr[9] = "The currency of Japan is the Yen?";
+
+        do go();
+        return this;
+    }
+
+
+    method void checkAns(int question, int key) {
+        if (question = 0 &  key = 131 & ~(key=0) ){ do printRight();} 
+        if (question = 0 &  key = 133 & ~(key=0) ){ do printWrong();} 
+
+
+        if (question = 1 & key = 131 & ~(key=0)) { do printRight();}
+        if (question = 1 &  key = 133 & ~(key=0) ){ do printWrong();}
+
+        if (question = 2 & key = 133 & ~(key=0)) { do printRight();}
+        if (question = 2 &  key = 131 & ~(key=0) ){ do printWrong();}
+
+        if (question = 3 & key = 133 & ~(key=0)) { do printRight();}
+        if (question = 3 &  key = 131 & ~(key=0) ){ do printWrong();}
+
+        if (question = 4 & key = 131 & ~(key=0)) { do printRight();}
+        if (question = 4 &  key = 133 & ~(key=0) ){ do printWrong();}
+
+        if (question = 5 & key = 131 & ~(key=0)) { do printRight();}
+        if (question = 5 &  key = 133 & ~(key=0) ){ do printWrong();}
+
+        if (question = 6 & key = 133 & ~(key=0)) { do printRight();}
+        if (question = 6 &  key = 131 & ~(key=0) ){ do printWrong();}
+
+        if (question = 7 & key = 133 & ~(key=0)) { do printRight();}
+        if (question = 7 &  key = 131 & ~(key=0) ){ do printWrong();}
+
+        if (question = 8 & key = 131 & ~(key=0)) { do printRight();}
+        if (question = 8 &  key = 133 & ~(key=0) ){ do printWrong();}
+
+        if (question = 9 & key = 131 & ~(key=0)) { do printRight();}
+        if (question = 9 &  key = 133 & ~(key=0) ){ do printWrong();}
+       
+
+        return;
+    }
+   
+    method void printRight() {
+        do Output.println();
+        do Output.printString("Good Job, +100 points");
+        do Output.println();
+        let total = total + 100;
+        do Output.println();
+        do Game.draw(4124);
+        do Game.draw(4132);
+        do Game.draw(4140);
+        do Game.draw(4148);
+        do Game.draw(4156);
+        
+        
+        
+         return;
+
+    }
+
+    method void printWrong() {
+        do Output.println();
+        do Output.printString("wrong answer, -20 points");
+        do Game.draw2(4124);
+        do Game.draw2(4132);
+        do Game.draw2(4140);
+        do Game.draw2(4148);
+        do Game.draw2(4156);
+
+
+        do Output.println();
+        let total=total-20;
+        do Output.println();
+        return;
+
+    }
+
+    method void go() {
+        var char key;
+        var int score;
+        let key=0;
+        do initilizingGame();  
+        while(question<10){
+            let key=0;
+            do Sys.wait(200);
+            do Output.printString(arr[question]);
+            while (key = 0) {let key = Keyboard.keyPressed();}
+
+
+            do checkAns(question, key);
+            let question=question+1;
+
+            if (key = 81)  { 
+                do Output.println();
+                do Output.printString("Game Quitted!!");
+                let question=11;
+
+            }
+            do Sys.wait(500);
+            do Screen.clearScreen();
+           
+            
+        }
+
+        do Output.println();
+        do Output.printString("achieved point:");
+        do Output.printInt(total);
+        do Output.println();
+
+        do Output.printString("total point:1000");
+        let score= (total/10); 
+        do Output.println();
+
+        do Output.printString("You have anwered correctly:");
+        do Output.printInt(score);
+        do Output.printString("%");
+        do Output.println();
+        do Game.draw(1620);
+        do Game.draw(1624);
+        do Game.draw(1628);
+        
+        return;
+    }
+
+
+    method void initilizingGame(){
+        do Output.printString("Guess the Answers Game(10 Question)");
+
+        do Output.println();
+        do Output.println();
+
+        do Output.printString("If TRUE press UPARROW and for FALSE press DOWNAROW ");
+        do Output.println();
+
+        do Output.printString("Press q to QUIT");
+        do Output.println();
+        do Output.println();
+
+        return ;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(arr);
+        do Memory.deAlloc(this);
+        return;
+      
+   }
+
+
+    function void draw(int location) {
+        var int memAddress;
+        let memAddress = 16384+location;
+        do Memory.poke(memAddress+0, -1);
+        do Memory.poke(memAddress+32, -32767);
+        do Memory.poke(memAddress+64, -32767);
+        do Memory.poke(memAddress+96, -25543);
+        do Memory.poke(memAddress+128, -27607);
+        do Memory.poke(memAddress+160, -25543);
+        do Memory.poke(memAddress+192, -32767);
+        do Memory.poke(memAddress+224, -32383);
+        do Memory.poke(memAddress+256, -18019);
+        do Memory.poke(memAddress+288, -28663);
+        do Memory.poke(memAddress+320, -28663);
+        do Memory.poke(memAddress+352, -24583);
+        do Memory.poke(memAddress+384, -32767);
+        do Memory.poke(memAddress+416, -32767);
+        do Memory.poke(memAddress+448, -32767);
+        do Memory.poke(memAddress+480, -1);
+        return;
+    }
+
+    function void draw2(int location) {
+    var int memAddress;
+    let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, -8185);
+	do Memory.poke(memAddress+32, 24590);
+	do Memory.poke(memAddress+64, 24588);
+	do Memory.poke(memAddress+96, 12312);
+	do Memory.poke(memAddress+128, 6192);
+	do Memory.poke(memAddress+160, 3168);
+	do Memory.poke(memAddress+192, 1728);
+	do Memory.poke(memAddress+224, 896);
+	do Memory.poke(memAddress+256, 896);
+	do Memory.poke(memAddress+288, 1728);
+	do Memory.poke(memAddress+320, 3168);
+	do Memory.poke(memAddress+352, 6192);
+	do Memory.poke(memAddress+384, 12312);
+	do Memory.poke(memAddress+416, 24580);
+	do Memory.poke(memAddress+448, -8185);
+	do Memory.poke(memAddress+480, -8185);
+	return;
+}
+
+
+
+}
